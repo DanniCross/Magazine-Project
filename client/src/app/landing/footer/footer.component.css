@@ -1,0 +1,11 @@
+#foot{
+    position: fixed;
+    min-height: 8vh;
+    bottom: 0;
+    width: 100%;
+}
+
+.text{
+    color: black;
+    margin-top: 2vh;
+}
