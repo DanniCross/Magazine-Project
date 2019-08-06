@@ -1,19 +1,77 @@
 <nav class="navbar navbar-expand-lg navbar-light" id="nav">
   <a class="navbar-brand" href="#">Vector</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"
+          >Home <span class="sr-only">(current)</span></a
+        >
       </li>
     </ul>
     <ul class="navbar-nav nav justify-content-end">
       <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+        <a
+          class="nav-link"
+          href="#"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          ><i class="fas fa-sign-in-alt"></i> Login</a
+        >
       </li>
     </ul>
   </div>
 </nav>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">LOGIN</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form action="" class="box" method="POST">
+        <input type="text" name="" id="" placeholder="Email">
+        <input type="password" name="" id="" placeholder="Password">
+        <input type="submit" name="" id="" placeholder="Login">
+      </form>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
