@@ -1,4 +1,12 @@
-@keyframes move_wave {
+.Margin {
+  margin-left: 33vw;
+  margin-right: 35vw;
+}
+.box {
+  box-shadow: 0 20px 30px rgba(10, 10, 10, 0.7), 0 0 0 1px rgba(10, 10, 10, 0.7);
+}
+
+/*@keyframes move_wave {
   0% {
     transform: translateX(0) translateZ(0) scaleY(1);
   }
@@ -71,4 +79,4 @@
 }
 .waveAnimation .waveBottom {
   animation: move_wave 15s linear infinite;
-}
+}*/

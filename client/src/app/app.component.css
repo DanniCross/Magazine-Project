@@ -1,5 +1,10 @@
 .is-danger {
-  background-color: hsl(310, 49%, 28%);
+  background-image: linear-gradient(
+    to top,
+    hsl(309, 23%, 18%),
+    20%,
+    hsl(310, 49%, 28%) 80%
+  );
 }
 
 .hero {
