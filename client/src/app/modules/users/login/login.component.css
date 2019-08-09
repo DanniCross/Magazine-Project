@@ -1,36 +1,12 @@
-.hero-body {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-body:before {
-  content: "";
-  z-index: -1;
-  position: absolute;
-  top: 0.4px;
-  right: 0;
-  left: 0;
-  bottom: 0px;
-  min-width: 100vw;
-  height: 100vh;
-  opacity: 0.7;
-  background-image: url(../../../../assets/img.jpg);
-}
-
-
-
-
-
-
 @keyframes move_wave {
   0% {
-      transform: translateX(0) translateZ(0) scaleY(1)
+    transform: translateX(0) translateZ(0) scaleY(1);
   }
   50% {
-      transform: translateX(-25%) translateZ(0) scaleY(0.55)
+    transform: translateX(-25%) translateZ(0) scaleY(0.55);
   }
   100% {
-      transform: translateX(-50%) translateZ(0) scaleY(1)
+    transform: translateX(-50%) translateZ(0) scaleY(1);
   }
 }
 .waveWrapper {
@@ -48,7 +24,12 @@
   overflow: hidden;
   height: 100%;
   bottom: -1px;
-  background-image: linear-gradient(to top, #27273c, 20%,hsl(310, 49%, 28%) 80%);
+  background-image: linear-gradient(
+    to top,
+    #27273c,
+    20%,
+    hsl(310, 49%, 28%) 80%
+  );
 }
 .bgTop {
   z-index: 15;
@@ -74,10 +55,10 @@
   background-size: 50% 100px;
 }
 .waveAnimation .waveTop {
-animation: move-wave 3s;
- -webkit-animation: move-wave 3s;
- -webkit-animation-delay: 1s;
- animation-delay: 1s;
+  animation: move-wave 3s;
+  -webkit-animation: move-wave 3s;
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
 }
 .waveMiddle {
   background-size: 50% 120px;
