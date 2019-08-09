@@ -1,3 +1,9 @@
-.navbar-item:hover{
-    background-color: hsl(209, 15%, 28%) !important;
+.navbar-item:hover {
+  background-color: hsl(260, 30%, 24%) !important;
+}
+
+.navbar {
+  position: fixed;
+  background-color: hsl(310, 49%, 28%);
+  min-width: 100vw;
 }
