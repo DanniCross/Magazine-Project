@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './landing/home/home.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { HomeComponent } from "./landing/home/home.component";
 
 const routes: Routes = [
-  {
+  /*{
     path: 'home',
     component: HomeComponent
   },
@@ -11,6 +11,16 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     redirectTo: '/home'
+  }*/
+
+  {
+    path: "home",
+    component: HomeComponent
+  },
+  {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "/home"
   }
 ];
 
@@ -18,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

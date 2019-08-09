@@ -1,22 +1,22 @@
-.jumbotron{
-    margin-top: 0;
-    margin-bottom: 0;
-    background: white;
+.hero-body {
+  position: relative;
+  z-index: 1;
 }
 
-#des,#art,#eva{
-    font-size: 20px;
-    color: black;
-    font-weight: bold;
-    margin-top: 1vh;
-    cursor: pointer;
-}
-
-#nav{
-    min-height: 9vh;
-    /*background: rgb(152, 255, 152);*/
-}
-
-.display-9{
-    margin-top: -7vh;
+.hero-body:before{
+  content:"";
+  z-index:-1;
+  position: absolute;
+  top: 0.4px;
+  bottom:10px;
+  right: 0;
+  left: 0;
+  min-width:100vw;
+  min-height:100vh;
+  opacity: 0.7;
+  background-image: url(../../../assets/img.jpg);
+} 
+.columns {
+  margin-left: 7vw;
+  margin-right: 7vw;
 }
