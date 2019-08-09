@@ -1,12 +1,8 @@
-#foot{
-    position: fixed;
-    min-height: 8vh;
-    bottom: 0;
-    width: 100%;
-    background: #FFAF9C;
-}
 
-.text{
-    color: black;
-    margin-top: 2vh;
-}
+.hero-foot {
+    position: relative;
+    z-index: 1;
+    background-color: hsl(310, 49%, 28%);
+    min-width: 100vw;
+  }
+  
