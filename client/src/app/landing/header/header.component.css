@@ -3,7 +3,7 @@
 }
 
 .navbar {
-  position: fixed;
+  /*position: absolute;*/
   background-color: hsl(310, 49%, 28%);
   min-width: 100vw;
 }

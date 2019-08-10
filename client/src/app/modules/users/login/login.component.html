@@ -7,40 +7,31 @@
           <i class="fas fa-user-tie fa-3x"></i>
         </span>
         <div class="field">
-          <div class="control">
-            <input
-              class="input is-primary"
-              type="text"
-              placeholder="Email"
-              formControlName="email"
-            />
-          </div>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input is-primary is-rounded" type="email" placeholder="Email" formControlName="email" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
-          <div class="control">
-            <input
-              class="input is-primary"
-              type="password"
-              placeholder="Password"
-              formControlName="password"
-            />
-          </div>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input is-primary is-rounded" type="password" placeholder="Password"
+              formControlName="password" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
-        <ngx-recaptcha2
-          #captchaElem
-          [siteKey]="key"
-          (reset)="NoCaptcha()"
-          (expire)="NoCaptcha()"
-          (load)="NoCaptcha()"
-          (success)="ReCaptcha()"
-          [useGlobalDomain]="false"
-          formControlName="recaptcha"
-        >
+        <ngx-recaptcha2 #captchaElem *ngIf="email.valid && password.valid" [siteKey]="key" (reset)="NoCaptcha()"
+          (expire)="NoCaptcha()" (load)="NoCaptcha()" (success)="ReCaptcha()" [useGlobalDomain]="false"
+          formControlName="recaptcha">
         </ngx-recaptcha2>
         <br />
-        <button class="button is-dark">
+        <button class="button is-success is-large is-fullwidth is-outlined is-rounded" routerLink="/AutorHome"
+          [disabled]="!LoginForm.valid">
           <span class="icon">
-            <i class="fas fa-user-friends"></i>
+            <i class="fas fa-sign-in-alt"></i>
           </span>
           <span>Login</span>
         </button>
