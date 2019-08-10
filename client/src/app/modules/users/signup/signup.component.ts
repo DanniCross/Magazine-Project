@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from 'src/app/services/users/user.service';
+import { environment } from 'src/environments/environment';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-signup',
@@ -9,29 +11,49 @@ import { UserService } from 'src/app/services/users/user.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private user: UserService) { }
+  constructor(private user: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.SignUPForm = this.CreatorForm();
+    this.size = document.querySelector('.fo').clientWidth;
   }
+
+  ngDoCheck() {
+    let divcaptcha = document.querySelector('#recaptcha');
+    if (isNullOrUndefined(divcaptcha)) {
+      divcaptcha = document.querySelector('#g-recaptcha');
+    }
+
+    let sizeA = document.querySelector('.fo').clientWidth;
+    if (sizeA < this.size) {
+      divcaptcha.id = 'g-recaptcha';
+    } else {
+      divcaptcha.id = 'recaptcha';
+    }
+  }
+
+  size = 0;
+  key = environment.captchakey;
+  captcha = false;
 
   SignUPForm: FormGroup;
 
   CreatorForm(): FormGroup;
 
   CreatorForm(): FormGroup {
-    return new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      secondname: new FormControl(''),
-      lastname: new FormControl('', [Validators.required]),
-      secondlastname: new FormControl(''),
-      country: new FormControl('', [Validators.required]),
-      phone: new FormControl(null, [Validators.required]),
-      afiliation: new FormControl('', [Validators.required]),
-      formation: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
-      re_pass: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required]),
+    return this.formBuilder.group({
+      name: ['', Validators.required],
+      secondname: [''],
+      lastname: ['', Validators.required],
+      secondlastname: [''],
+      country: ['', Validators.required],
+      phone: [null, Validators.required],
+      afiliation: ['', Validators.required],
+      formation: ['', Validators.required],
+      password: ['', Validators.required],
+      re_pass: ['', Validators.required],
+      email: ['', Validators.required],
+      recaptcha: ['', Validators.required]
     })
   }
 
@@ -90,6 +112,20 @@ export class SignupComponent implements OnInit {
       this.password.value, 1).subscribe(user => {
         alert(`The user ${user.name} ${user.lastname} has been registered!`);
       });
+  }
+
+  ReCaptcha() {
+    this.captcha = !this.captcha;
+  }
+
+  NoCaptcha() {
+    this.captcha = !this.captcha;
+  }
+
+  Evaluate() {
+    return (this.name.valid && this.secondname.valid && this.lastname.valid && this.secondlastname.valid &&
+      this.country.valid && this.phone.valid && this.afiliation.valid && this.formation.valid && this.email.valid &&
+      this.password.valid && this.re_pass.valid && (this.password.value == this.re_pass.value));
   }
 
 

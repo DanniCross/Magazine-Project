@@ -4,16 +4,41 @@ import { ListArticlesComponent } from "./list-articles/list-articles.component";
 import { HomeAutorComponent } from "./home-autor/home-autor.component";
 import { SendArticlesComponent } from "./send-articles/send-articles.component";
 import { ReviewArticlesComponent } from "./review-articles/review-articles.component";
+import { UrlInjectionAutorGuard } from 'src/app/guards/url-injection-autor.guard';
 
 const routes: Routes = [
-  { path: "Autor/List", component: ListArticlesComponent },
-  { path: "Autor/Home", component: HomeAutorComponent },
-  { path: "Autor/Send", component: SendArticlesComponent },
-  { path: "Autor/Review", component: ReviewArticlesComponent }
+  {
+    path: "Autor/List",
+    component: ListArticlesComponent,
+    canActivate: [
+      UrlInjectionAutorGuard
+    ]
+  },
+  {
+    path: "Autor/Home",
+    component: HomeAutorComponent,
+    canActivate: [
+      UrlInjectionAutorGuard
+    ]
+  },
+  {
+    path: "Autor/Send",
+    component: SendArticlesComponent,
+    canActivate: [
+      UrlInjectionAutorGuard
+    ]
+  },
+  {
+    path: "Autor/Review",
+    component: ReviewArticlesComponent,
+    canActivate: [
+      UrlInjectionAutorGuard
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AutorRoutingModule {}
+export class AutorRoutingModule { }

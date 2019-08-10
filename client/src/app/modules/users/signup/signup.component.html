@@ -1,4 +1,4 @@
-<form class="container hero-body" [formGroup]="SignUPForm">
+<form class="container hero-body fo" [formGroup]="SignUPForm">
   <div class="box has-background-light Margin">
     <div class="title has-text-dark has-text-centered">Sign Up</div>
     <span class="icon Icon">
@@ -110,6 +110,11 @@
               formControlName="re_pass" /><span class="icon is-left"><i class="fa">lock</i></span>
           </div>
         </div>
+      </div>
+      <div id="recaptcha" style="width: auto">
+        <ngx-recaptcha2 #captchaElem *ngIf="Evaluate()" [siteKey]="key" (reset)="NoCaptcha()" (expire)="NoCaptcha()"
+          (load)="NoCaptcha()" (success)="ReCaptcha()" [useGlobalDomain]="false" formControlName="recaptcha">
+        </ngx-recaptcha2>
       </div>
       <br />
       <button class="button is-info is-large Icon2 is-outlined is-rounded" type="reset" (click)="SignUp()"
