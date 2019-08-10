@@ -9,12 +9,7 @@
               <div class="column">
                 <div class="file has-name is-boxed is-centered">
                   <label class="file-label">
-                    <input
-                      class="file-input"
-                      type="file"
-                      name="resume"
-                      formControlName="file"
-                    />
+                    <input #fi class="file-input" type="file" name="resume" (change)="SetFile(fi.files[0])" />
                     <span class="file-cta">
                       <span class="file-icon">
                         <i class="fas fa-upload"></i>
@@ -34,24 +29,15 @@
             <div class="columns">
               <div class="column">
                 <p class="control has-icons-left has-icons-right">
-                  <input
-                    class="input is-primary is-rounded"
-                    type="text"
-                    placeholder="Title"
-                    formControlName="title"
-                  />
+                  <input class="input is-primary is-rounded" type="text" placeholder="Title" formControlName="title" />
                   <span class="icon is-small is-left">
                     <i class="fas fa-heading"></i>
                   </span>
                 </p>
                 <br />
                 <p class="control has-icons-left has-icons-right">
-                  <input
-                    class="input is-primary is-rounded"
-                    type="text"
-                    placeholder="Keywords"
-                    formControlName="keywords"
-                  />
+                  <input class="input is-primary is-rounded" type="text" placeholder="Keywords"
+                    formControlName="keywords" />
                   <span class="icon is-small is-left">
                     <i class="fas fa-key"></i>
                   </span>
@@ -61,15 +47,9 @@
                 <textarea class="textarea" placeholder="Abstract" formControlName="abstract"></textarea>
               </div>
             </div>
-            <progress class="progress is-large is-success" value="0" max="100"
-              >0%</progress
-            >
-            <button
-              class="button is-success is-large is-fullwidth is-outlined is-rounded"
-              type="reset"
-              (click)="SendArticle()"
-              [disabled]="!UploadForm.valid"
-            >
+            <progress class="progress is-large is-success" value="0" max="100">0%</progress>
+            <button class="button is-success is-large is-fullwidth is-outlined is-rounded" type="reset"
+              (click)="SendArticle()" [disabled]="!UploadForm.valid">
               <span class="icon">
                 <i class="fas fa-file-upload"></i>
               </span>
