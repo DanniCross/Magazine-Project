@@ -1,44 +1,43 @@
-<div class="hero-body">
-  <form [formGroup]="LoginForm">
-    <div class="box has-background-light Margin">
-      <div class="container has-text-centered">
-        <p class="title has-text-dark">Login</p>
-        <span class="icon">
-          <i class="fas fa-user-tie fa-3x"></i>
-        </span>
-        <div class="field">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input is-primary is-rounded" type="email" placeholder="Email" formControlName="email" />
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </p>
-        </div>
-        <div class="field">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input is-primary is-rounded" type="password" placeholder="Password"
-              formControlName="password" />
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
+<form class="hero-body fo" [formGroup]="LoginForm">
+  <div class="box has-background-light Margin">
+    <div class="container has-text-centered">
+      <p class="title has-text-dark">Login</p>
+      <span class="icon">
+        <i class="fas fa-user-tie fa-3x"></i>
+      </span>
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input is-primary is-rounded" type="email" placeholder="Email" formControlName="email" />
+          <span class="icon is-small is-left">
+            <i class="fas fa-envelope"></i>
+          </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input is-primary is-rounded" type="password" placeholder="Password"
+            formControlName="password" />
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+        </p>
+      </div>
+      <div id="recaptcha" style="width: auto">
         <ngx-recaptcha2 #captchaElem *ngIf="email.valid && password.valid" [siteKey]="key" (reset)="NoCaptcha()"
           (expire)="NoCaptcha()" (load)="NoCaptcha()" (success)="ReCaptcha()" [useGlobalDomain]="false"
           formControlName="recaptcha">
         </ngx-recaptcha2>
-        <br />
-        <button class="button is-success is-large is-fullwidth is-outlined is-rounded" routerLink="/AutorHome"
-          [disabled]="!LoginForm.valid">
-          <span class="icon">
-            <i class="fas fa-sign-in-alt"></i>
-          </span>
-          <span>Login</span>
-        </button>
       </div>
+      <button class="button is-success is-large is-fullwidth is-outlined is-rounded" routerLink="/AutorHome"
+        (click)="Login()" [disabled]="!LoginForm.valid">
+        <span class="icon">
+          <i class="fas fa-sign-in-alt"></i>
+        </span>
+        <span>Login</span>
+      </button>
     </div>
-  </form>
-</div>
+  </div>
+</form>
 
 <!--<div class="waveWrapper waveAnimation">
     <div class="waveWrapperInner bgTop">

@@ -112,7 +112,7 @@
         </div>
       </div>
       <br />
-      <button class="button is-info is-large Icon2 is-outlined is-rounded" (click)="SignUp()"
+      <button class="button is-info is-large Icon2 is-outlined is-rounded" type="reset" (click)="SignUp()"
         [disabled]="!SignUPForm.valid || (password.value != re_pass.value)">
         <span class="icon">
           <i class="fas fa-plus"></i>

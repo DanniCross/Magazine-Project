@@ -11,3 +11,13 @@
 #login {
   margin-right: 1vw;
 }
+
+.InSession{
+    width: 13px;
+    height: 13px;
+}
+
+.name {
+  background-color: transparent;
+  border-color: transparent;
+}

@@ -14,10 +14,7 @@
     ]
   },
   "User": {
-    "dataSource": "db",
-    "options": {
-      "emailVerificationRequired": true
-    }
+    "dataSource": "db"
   },
   "AccessToken": {
     "dataSource": "db",

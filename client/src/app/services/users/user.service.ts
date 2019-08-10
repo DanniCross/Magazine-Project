@@ -25,12 +25,12 @@ export class UserService {
       });
   }
 
-  Login(email, password): Observable<UserModel> {
-    return this.http.post<UserModel>(`${url}Users/login?include=user`, { email, password }, {
+  Login(email, password) {
+    return this.http.post(`${url}Users/login?include=user`, { email, password }, {
       headers: new HttpHeaders({
         "content-type": "application/json"
       })
-    })
+    });
   }
 
   SaveUser(user, token) {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/users/user.service';
+import { isNullOrUndefined } from 'util';
 
 @Component({
   selector: 'app-home-autor',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAutorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private user: UserService) { }
 
   ngOnInit() {
+    let user = this.user.getUserInfo();
+    if (!isNullOrUndefined(user)) {
+      this.username = `${user['name']} ${user['lastname']}`;
+    }
   }
+
+  username = '';
 
 }
