@@ -1,44 +1,42 @@
 <div class="hero-head">
   <nav class="navbar">
-    <div class="container">
-      <div class="navbar-brand">
-        <a class="navbar-item" routerLink="/Home"I>
-          <p class="title">Vector Magazine</p>
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="/Home">
+        <p class="title">Vector Magazine</p>
+      </a>
+      <span class="navbar-burger burger" [class.is-active]="active" (click)="Activate()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="navbarMenuHeroB" class="navbar-menu" [class.is-active]="active">
+      <div class="navbar-end">
+        <a class="navbar-item has-text-light">
+          Evaluation/Classification
         </a>
-        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-          <span></span>
-          <span></span>
-          <span></span>
+        <a class="navbar-item has-text-light">
+          Articles
+        </a>
+        <a class="navbar-item has-text-light">
+          Manual
+        </a>
+        <span class="navbar-item">
+          <button class="button is-light" routerLink="/Signup">
+            <span class="icon">
+              <i class="fas fa-users"></i>
+            </span>
+            <span class="has-text-dark">Sign Up</span>
+          </button>
         </span>
-      </div>
-      <div id="navbarMenuHeroB" class="navbar-menu">
-        <div class="navbar-end">
-          <a class="navbar-item has-text-light">
-            Evaluation/Classification
-          </a>
-          <a class="navbar-item has-text-light">
-            Articles
-          </a>
-          <a class="navbar-item has-text-light">
-            Manual
-          </a>
-          <span class="navbar-item">
-            <button class="button is-light" routerLink="/Signup">
-              <span class="icon">
-                <i class="fas fa-users"></i>
-              </span>
-              <span class="has-text-dark">Sign Up</span>
-            </button>
-          </span>
-          <span class="navbar-item">
-            <button class="button is-light" routerLink="/Login">
-              <span class="icon">
-                <i class="fas fa-user"></i>
-              </span>
-              <span class="has-text-dark">Login</span>
-            </button>
-          </span>
-        </div>
+        <span class="navbar-item" id="login">
+          <button class="button is-light" routerLink="/Login">
+            <span class="icon">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="has-text-dark">Login</span>
+          </button>
+        </span>
       </div>
     </div>
   </nav>

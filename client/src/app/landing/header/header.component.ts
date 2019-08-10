@@ -12,4 +12,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  active = false;
+
+  Activate() {
+    this.active = !this.active;
+  }
+
+
 }
