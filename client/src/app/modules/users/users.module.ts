@@ -15,6 +15,10 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     FormsModule,
     ReactiveFormsModule,
     NgxCaptchaModule
+  ],
+  exports: [
+    LoginComponent,
+    SignupComponent
   ]
 })
 export class UsersModule { }
