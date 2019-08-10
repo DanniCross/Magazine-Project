@@ -11,17 +11,13 @@ form .field {
 .Icon {
   margin-left: auto;
   margin-right: auto;
-  display: block;
+  display: flex;
 }
 
 .Icon2 {
   margin-left: auto;
   margin-right: auto;
   display: block;
-}
-
-.Title {
-  font-size: 45px;
 }
 
 .Margin {
