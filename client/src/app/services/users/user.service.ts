@@ -13,12 +13,16 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  Register(username, email, password, rol): Observable<UserModel> {
-    return this.http.post<UserModel>(`${url}Users`, { username, email, password, rol }, {
-      headers: new HttpHeaders({
-        "content-type": "application/json"
-      })
-    });
+  Register(name, secondname, lastname, secondlastname, country, phone, afiliation,
+    formation, email, password, rol): Observable<UserModel> {
+    return this.http.post<UserModel>(`${url}Users`, {
+      name, secondname, lastname, secondlastname, country, phone,
+      afiliation, formation, email, password, rol
+    }, {
+        headers: new HttpHeaders({
+          "content-type": "application/json"
+        })
+      });
   }
 
   Login(email, password): Observable<UserModel> {

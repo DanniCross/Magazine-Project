@@ -2,20 +2,22 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-.row-one {
-  padding-top: 13px;
-}
+
 form .field {
   margin: auto;
   max-width: 740px;
 }
 
 .Icon {
-  margin-left: 60vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .Icon2 {
-  margin-left: 43vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .Title {
@@ -29,4 +31,8 @@ form .field {
 
 .box {
   box-shadow: 0 20px 30px rgba(10, 10, 10, 0.7), 0 0 0 1px rgba(10, 10, 10, 0.7);
+}
+
+#select {
+  width: 100%;
 }
