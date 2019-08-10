@@ -48,8 +48,4 @@ export class UserService {
       return JSON.parse(user);
     }
   }
-
-
-
-
 }

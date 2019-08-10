@@ -6,10 +6,10 @@ import { SendArticlesComponent } from "./send-articles/send-articles.component";
 import { ReviewArticlesComponent } from "./review-articles/review-articles.component";
 
 const routes: Routes = [
-  { path: "AutorList", component: ListArticlesComponent },
-  { path: "AutorHome", component: HomeAutorComponent },
-  { path: "AutorSend", component: SendArticlesComponent },
-  { path: "AutorReview", component: ReviewArticlesComponent }
+  { path: "Autor/List", component: ListArticlesComponent },
+  { path: "Autor/Home", component: HomeAutorComponent },
+  { path: "Autor/Send", component: SendArticlesComponent },
+  { path: "Autor/Review", component: ReviewArticlesComponent }
 ];
 
 @NgModule({
