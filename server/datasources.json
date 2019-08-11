@@ -9,5 +9,11 @@
     "user": "",
     "useNewUrlParser": true,
     "connector": "mongodb"
+  },
+  "files-local": {
+    "name": "files-local",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./server/local-storage/"
   }
 }

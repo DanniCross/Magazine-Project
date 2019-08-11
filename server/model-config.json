@@ -34,5 +34,13 @@
   "Role": {
     "dataSource": "db",
     "public": false
+  },
+  "container": {
+    "dataSource": "files-local",
+    "public": true
+  },
+  "Article": {
+    "dataSource": "db",
+    "public": true
   }
 }

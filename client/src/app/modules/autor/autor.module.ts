@@ -6,6 +6,7 @@ import { HomeAutorComponent } from "./home-autor/home-autor.component";
 import { ReviewArticlesComponent } from "./review-articles/review-articles.component";
 import { ListArticlesComponent } from "./list-articles/list-articles.component";
 import { SendArticlesComponent } from "./send-articles/send-articles.component";
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,6 @@ import { SendArticlesComponent } from "./send-articles/send-articles.component";
     ListArticlesComponent,
     SendArticlesComponent
   ],
-  imports: [CommonModule, AutorRoutingModule]
+  imports: [CommonModule, AutorRoutingModule, ReactiveFormsModule, FormsModule]
 })
 export class AutorModule {}

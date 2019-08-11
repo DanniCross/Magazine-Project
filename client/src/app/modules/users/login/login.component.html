@@ -7,7 +7,12 @@
       </span>
       <div class="field">
         <p class="control has-icons-left has-icons-right">
-          <input class="input is-primary is-rounded" type="email" placeholder="Email" formControlName="email" />
+          <input
+            class="input is-primary is-rounded"
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+          />
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -15,17 +20,29 @@
       </div>
       <div class="field">
         <p class="control has-icons-left has-icons-right">
-          <input class="input is-primary is-rounded" type="password" placeholder="Password"
-            formControlName="password" />
+          <input
+            class="input is-primary is-rounded"
+            type="password"
+            placeholder="Password"
+            formControlName="password"
+          />
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
         </p>
       </div>
       <div id="recaptcha" style="width: auto">
-        <ngx-recaptcha2 #captchaElem *ngIf="email.valid && password.valid" [siteKey]="key" (reset)="NoCaptcha()"
-          (expire)="NoCaptcha()" (load)="NoCaptcha()" (success)="ReCaptcha()" [useGlobalDomain]="false"
-          formControlName="recaptcha">
+        <ngx-recaptcha2
+          #captchaElem
+          *ngIf="email.valid && password.valid"
+          [siteKey]="key"
+          (reset)="NoCaptcha()"
+          (expire)="NoCaptcha()"
+          (load)="NoCaptcha()"
+          (success)="ReCaptcha()"
+          [useGlobalDomain]="false"
+          formControlName="recaptcha"
+        >
         </ngx-recaptcha2>
       </div>
       <button class="button is-success is-large is-fullwidth is-outlined is-rounded" routerLink="/Autor/Home"
@@ -38,24 +55,3 @@
     </div>
   </div>
 </form>
-
-<!--<div class="waveWrapper waveAnimation">
-    <div class="waveWrapperInner bgTop">
-      <div
-        class="wave waveTop"
-        style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"
-      ></div>
-    </div>
-    <div class="waveWrapperInner bgMiddle">
-      <div
-        class="wave waveMiddle"
-        style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"
-      ></div>
-    </div>
-    <div class="waveWrapperInner bgBottom">
-      <div
-        class="wave waveBottom"
-        style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"
-      ></div>
-    </div>
-  </div>-->
