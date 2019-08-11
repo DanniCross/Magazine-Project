@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { UserService } from 'src/app/services/users/user.service';
 import { environment } from 'src/environments/environment';
 import { isNullOrUndefined } from 'util';
+import * as CryptoJS from 'crypto-js';
+
 
 @Component({
   selector: 'app-signup',
@@ -101,15 +103,22 @@ export class SignupComponent implements OnInit {
     return this.SignUPForm.get('email');
   }
 
+  Ofus(data) {
+    var hashed = CryptoJS.SHA256(data);
+    var result = hashed.toString(CryptoJS.enc.Base64);
+    return result;
+  }
+
   SetFormation(Formation) {
     console.log(Formation);
     this.SignUPForm.patchValue({ formation: Formation });
   }
 
   SignUp() {
+    let password = this.Ofus(this.password.value);
     this.user.Register(this.name.value, this.secondname.value, this.lastname.value, this.secondlastname.value,
       this.country.value, this.phone.value, this.afiliation.value, this.formation.value, this.email.value,
-      this.password.value, 1).subscribe(user => {
+      password, 1).subscribe(user => {
         alert(`The user ${user.name} ${user.lastname} has been registered!`);
       });
   }
