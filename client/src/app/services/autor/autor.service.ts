@@ -11,10 +11,11 @@ const url = "http://localhost:3000/api/";
 export class AutorService {
   constructor(private http: HttpClient) { }
 
-  UploadFile(file: File): Observable<File> {
-    return this.http.post<File>(`${url}containers/Articles/upload`, file, {
+  UploadFile(file) {
+    console.log(file);
+    return this.http.post(`${url}containers/Articles/upload`, file, {
       headers: new HttpHeaders({
-        "content-type": "application/json"
+        "content-type": "application/octet-stream"
       })
     });
   }

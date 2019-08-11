@@ -1,6 +1,8 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from 'src/app/services/users/user.service';
 import { isNullOrUndefined } from 'util';
+import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,7 @@ import { isNullOrUndefined } from 'util';
 })
 export class HeaderComponent implements OnInit, DoCheck {
 
-  constructor(private user: UserService) { }
+  constructor(private user: UserService, private router: Router) { }
 
   ngOnInit() {
     this.Logged();
@@ -19,6 +21,7 @@ export class HeaderComponent implements OnInit, DoCheck {
     this.Logged();
   }
 
+  User = null;
   username = '';
   logged = false;
   active = false;
@@ -31,8 +34,9 @@ export class HeaderComponent implements OnInit, DoCheck {
   Logged() {
     let user = this.user.getUserInfo();
     if (!isNullOrUndefined(user)) {
-      this.logged = true
+      this.logged = true;
       this.username = `${user['name']} ${user['lastname']}`;
+      this.User = user;
     }
   }
 
@@ -45,6 +49,16 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   Info() {
     return this.info = !this.info;
+  }
+
+  Redirect() {
+    if (this.User['rol'] == 1) {
+      this.router.navigate(['/Autor/Home']);
+    } else if (this.User['rol'] == 2) {
+      this.router.navigate(['Evaluator/Home']);
+    } else if (this.User['rol'] == 3) {
+      this.router.navigate(['/Editor/Home']);
+    }
   }
 
 

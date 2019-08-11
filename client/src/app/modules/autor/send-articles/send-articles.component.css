@@ -44,7 +44,8 @@ form .field {
 .box {
   box-shadow: 0 20px 30px rgba(10, 10, 10, 0.7), 0 0 0 1px rgba(10, 10, 10, 0.7);
 }
-.contenedor {
+
+/*.contenedor {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,4 +66,9 @@ form .field {
       color: #FFFFFF;
     }
   }
+}*/
+
+.Tit, .key {
+  float: left;
+  font-weight: bold;
 }
