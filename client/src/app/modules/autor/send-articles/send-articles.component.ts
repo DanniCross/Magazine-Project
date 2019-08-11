@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
   styleUrls: ["./send-articles.component.css"]
 })
 export class SendArticlesComponent implements OnInit {
-  constructor(private autorService: AutorService) {}
+  constructor(private autorService: AutorService) { }
 
   ngOnInit() {
     this.UploadForm = this.FormCreator();
@@ -24,7 +24,7 @@ export class SendArticlesComponent implements OnInit {
       title: new FormControl('', Validators.required),
       abstract: new FormControl('', Validators.required),
       keywords: new FormControl('', Validators.required),
-      file: new FormControl('', Validators.required),
+      file: new FormControl([], Validators.required)
     })
   }
 
@@ -44,18 +44,25 @@ export class SendArticlesComponent implements OnInit {
     return this.UploadForm.get('file');
   }
 
+  SetFile(File) {
+    this.UploadForm.patchValue({ file: File });
+  }
+
   SendArticle() {
     let ArticleFile: ArticleModel = {
       title: this.title.value,
       abstract: this.abstract.value,
       keywords: this.keywords.value,
-      file: this.file.value,
+      file: 'hola',
       id: null
     };
-    this.autorService.UploadFile(ArticleFile.file).subscribe(item => {
-      this.UploadForm.patchValue({file: item["name"]});
+    console.log(this.file.value);
+    this.autorService.UploadFile(this.file.value).subscribe(item => {
+      ArticleFile.file = item['name'];
       alert(`the item ${item['name']} has been uploaded...`)
     });
-    this.autorService.UploadArticle(ArticleFile).subscribe();
+    this.autorService.UploadArticle(ArticleFile).subscribe(article => {
+      console.log(article);
+    });
   }
 }
