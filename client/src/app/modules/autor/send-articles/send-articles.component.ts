@@ -53,7 +53,7 @@ export class SendArticlesComponent implements OnInit {
       title: this.title.value,
       abstract: this.abstract.value,
       keywords: this.keywords.value,
-      file: 'hola',
+      file: this.file.value.name,
       id: null
     };
     console.log(this.file.value);

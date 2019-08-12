@@ -14,7 +14,7 @@ export class AutorService {
   UploadFile(file: File): Observable<File> {
     return this.http.post<File>(`${url}containers/Articles/upload`, file, {
       headers: new HttpHeaders({
-        "content-type": "application/json"
+        "content-type": "application/octet-stream"
       })
     });
   }
