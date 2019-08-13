@@ -10,6 +10,22 @@
     "useNewUrlParser": true,
     "connector": "mongodb"
   },
+  "Email": {
+    "name": "Email",
+    "connector": "mail",
+    "transports": [
+      {
+        "type": "SMTP",
+        "host": "smtp.gmail.com",
+        "secure": true,
+        "port": 465,
+        "auth": {
+          "user": "pruebas.prog3@gmail.com",
+          "pass": "pruebas12345"
+        }
+      }
+    ]
+  },
   "files-local": {
     "name": "files-local",
     "connector": "loopback-component-storage",

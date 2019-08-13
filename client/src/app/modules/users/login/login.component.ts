@@ -7,6 +7,9 @@ import {
 import { environment } from "src/environments/environment";
 import { UserService } from 'src/app/services/users/user.service';
 import { isNullOrUndefined } from 'util';
+import * as CryptoJS from 'crypto-js';
+import { Router } from '@angular/router';
+import { LoginGuard } from 'src/app/guards/login.guard';
 
 @Component({
   selector: "app-login",
@@ -14,7 +17,7 @@ import { isNullOrUndefined } from 'util';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit, DoCheck {
-  constructor(private formBuilder: FormBuilder, private user: UserService) { }
+  constructor(private formBuilder: FormBuilder, private user: UserService, private router: Router) { }
 
   ngOnInit() {
     this.LoginForm = this.FormCreator();
@@ -56,7 +59,11 @@ export class LoginComponent implements OnInit, DoCheck {
   }
 
   public get password() {
-    return this.LoginForm.get("password");
+    return this.LoginForm.get('password');
+  }
+
+  public get recaptcha() {
+    return this.LoginForm.get('recaptcha');
   }
 
   ReCaptcha() {
@@ -67,9 +74,23 @@ export class LoginComponent implements OnInit, DoCheck {
     this.captcha = !this.captcha;
   }
 
+  Ofus(data) {
+    var hashed = CryptoJS.SHA256(data);
+    var result = hashed.toString(CryptoJS.enc.Base64);
+    return result;
+  }
+
   Login() {
-    this.user.Login(this.email.value, this.password.value).subscribe(user => {
+    let password = this.Ofus(this.password.value);
+    this.user.Login(this.email.value, password).subscribe(user => {
       this.user.SaveUser(user['user'], user['id']);
+      if (user['user']['rol'] == 1) {
+        this.router.navigate(['/Autor/Home']);
+      } else if (user['user']['rol'] == 2) {
+        this.router.navigate(['/Evaluator/Home']);
+      } else if (user['user']['rol'] == 3) {
+        this.router.navigate(['/Editor/Home']);
+      }
     });
   }
 }

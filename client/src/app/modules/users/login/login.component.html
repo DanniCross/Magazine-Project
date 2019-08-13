@@ -7,12 +7,7 @@
       </span>
       <div class="field">
         <p class="control has-icons-left has-icons-right">
-          <input
-            class="input is-primary is-rounded"
-            type="email"
-            placeholder="Email"
-            formControlName="email"
-          />
+          <input class="input is-primary is-rounded" type="email" placeholder="Email" formControlName="email" />
           <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
           </span>
@@ -20,33 +15,21 @@
       </div>
       <div class="field">
         <p class="control has-icons-left has-icons-right">
-          <input
-            class="input is-primary is-rounded"
-            type="password"
-            placeholder="Password"
-            formControlName="password"
-          />
+          <input class="input is-primary is-rounded" type="password" placeholder="Password"
+            formControlName="password" />
           <span class="icon is-small is-left">
             <i class="fas fa-lock"></i>
           </span>
         </p>
       </div>
       <div id="recaptcha" style="width: auto">
-        <ngx-recaptcha2
-          #captchaElem
-          *ngIf="email.valid && password.valid"
-          [siteKey]="key"
-          (reset)="NoCaptcha()"
-          (expire)="NoCaptcha()"
-          (load)="NoCaptcha()"
-          (success)="ReCaptcha()"
-          [useGlobalDomain]="false"
-          formControlName="recaptcha"
-        >
+        <ngx-recaptcha2 #captchaElem *ngIf="email.valid && password.valid" [siteKey]="key" (reset)="NoCaptcha()"
+          (expire)="NoCaptcha()" (load)="NoCaptcha()" (success)="ReCaptcha()" [useGlobalDomain]="false"
+          formControlName="recaptcha">
         </ngx-recaptcha2>
       </div>
-      <button class="button is-success is-large is-fullwidth is-outlined is-rounded" routerLink="/Autor/Home"
-        (click)="Login()" [disabled]="!LoginForm.valid">
+      <button class="button is-success is-large is-fullwidth is-outlined is-rounded" (click)="Login()"
+        [disabled]="!LoginForm.valid">
         <span class="icon">
           <i class="fas fa-sign-in-alt"></i>
         </span>

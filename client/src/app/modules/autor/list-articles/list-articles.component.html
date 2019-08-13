@@ -1,0 +1,19 @@
+<div *ngFor="let article of articles" class="margin">
+  <article class="tile is-child notification is-light">
+    <p class="title has-text-dark">Title: {{ article.title }}</p>
+    <p class="subtitle has-text-dark">KeyWords: {{ article.keywords }}</p>
+    <div class="content">
+      <p class="subtitle has-text-dark">Abstract: {{ article.abstract }}</p>
+      <p class="subtitle has-text-dark">
+        File:
+        <a
+          href="Magazine-Project/server/local-storage/Articles/{{
+            article.file
+          }}"
+          >download</a
+        >
+      </p>
+    </div>
+  </article>
+  <br />
+</div>

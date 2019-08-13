@@ -53,14 +53,15 @@ export class SendArticlesComponent implements OnInit {
       title: this.title.value,
       abstract: this.abstract.value,
       keywords: this.keywords.value,
-      file: this.file.value.name,
+      file: this.file.value,
       id: null
     };
-    console.log(this.file.value);
+
     this.autorService.UploadFile(this.file.value).subscribe(item => {
-      ArticleFile.file = item['name'];
-      alert(`the item ${item['name']} has been uploaded...`)
+      console.log(item);
+      alert(`the item ${ArticleFile.file} has been uploaded...`)
     });
+
     this.autorService.UploadArticle(ArticleFile).subscribe(article => {
       console.log(article);
     });
