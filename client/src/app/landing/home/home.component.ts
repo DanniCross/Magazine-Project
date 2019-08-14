@@ -27,4 +27,11 @@ export class HomeComponent implements OnInit {
       this.articles = items;
     });
   }
+
+  download(article) { 
+    this.autorService.GetFile(article.file).subscribe(file => {
+      console.log(file);
+    }
+    );
+  }
 }

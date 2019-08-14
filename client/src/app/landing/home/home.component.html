@@ -81,6 +81,7 @@
       <div class="content">
         <p class="subtitle has-text-dark">Abstract: {{ article.abstract }}</p>
         <p class="subtitle has-text-dark">File: {{ article.file }}</p>
+        <button class="button is-rounded" (click)="download(article)">Download</button>
       </div>
     </article>
     <br />

@@ -7,13 +7,15 @@ import { ReviewArticlesComponent } from "./review-articles/review-articles.compo
 import { ListArticlesComponent } from "./list-articles/list-articles.component";
 import { SendArticlesComponent } from "./send-articles/send-articles.component";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { EditArticlesComponent } from './edit-articles/edit-articles.component';
 
 @NgModule({
   declarations: [
     HomeAutorComponent, 
     ReviewArticlesComponent,
     ListArticlesComponent,
-    SendArticlesComponent
+    SendArticlesComponent,
+    EditArticlesComponent
   ],
   imports: [CommonModule, AutorRoutingModule, ReactiveFormsModule, FormsModule]
 })

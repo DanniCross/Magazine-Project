@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { ArticleModel } from "src/app/models/article/ArticleModel";
 import { Observable } from "rxjs";
 import { UserService } from "../users/user.service";
+import { UserModel } from "src/app/models/user/UserModel";
 
 const url = "http://localhost:3000/api/";
 
@@ -14,6 +15,7 @@ export class AutorService {
     this.token = this.user.getToken();
   }
 
+  //Subir Archivo
   UploadFile(file) {
     let data = new FormData();
     data.append("Articles[]", file, file.name);
@@ -25,22 +27,30 @@ export class AutorService {
 
   token = "";
 
+  //Crear Carpeta
+  CreateFolder(name) {
+    return this.http.post(
+      `${url}containers/`,
+      { name },
+      {
+        headers: new HttpHeaders({
+          "content-type": "application/json"
+        })
+      }
+    );
+  }
+
+  //Obtener Archivo(Descargar)
   GetFile(file) {
-    return this.http.get(`${url}containers/Articles/files/${file}`, {
-      headers: new HttpHeaders({
-        "content-type": "application/json"
-      })
-    });
+    return this.http.get(`${url}containers/Articles/download/${file}`);
   }
 
+  //Obtener Archivos
   GetFiles() {
-    return this.http.get(`${url}containers/Articles`, {
-      headers: new HttpHeaders({
-        "content-type": "application/json"
-      })
-    });
+    return this.http.get(`${url}containers/Articles/files`);
   }
 
+  //Subir info de Articulo
   UploadArticle(file): Observable<ArticleModel> {
     return this.http.post<ArticleModel>(
       `${url}Articles?access_token=${this.token}`,
@@ -53,11 +63,25 @@ export class AutorService {
     );
   }
 
+  //Obtener info de Articulo
   GetFileData(): Observable<ArticleModel[]> {
     return this.http.get<ArticleModel[]>(`${url}Articles`, {
       headers: new HttpHeaders({
         "content-type": "application/json"
       })
     });
+  }
+
+  //Editar info de Articulo
+  EditArticle(file): Observable<ArticleModel> {
+    return this.http.put<ArticleModel>(
+      `${url}Articles/${file.id}?access_token=${this.token}`,
+      file,
+      {
+        headers: new HttpHeaders({
+          "content-type": "application/json"
+        })
+      }
+    );
   }
 }

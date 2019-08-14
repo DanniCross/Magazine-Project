@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { AutorService } from "src/app/services/autor/autor.service";
 import { ArticleModel } from "src/app/models/article/ArticleModel";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AutorService } from "src/app/services/autor/autor.service";
 
 @Component({
-  selector: "app-send-articles",
-  templateUrl: "./send-articles.component.html",
-  styleUrls: ["./send-articles.component.css"]
+  selector: "app-edit-articles",
+  templateUrl: "./edit-articles.component.html",
+  styleUrls: ["./edit-articles.component.css"]
 })
-export class SendArticlesComponent implements OnInit {
+export class EditArticlesComponent implements OnInit {
   constructor(private autorService: AutorService) {}
 
   ngOnInit() {
@@ -24,8 +24,13 @@ export class SendArticlesComponent implements OnInit {
       title: new FormControl("", Validators.required),
       abstract: new FormControl("", Validators.required),
       keywords: new FormControl("", Validators.required),
-      file: new FormControl([], Validators.required)
+      file: new FormControl([], Validators.required),
+      id: new FormControl("")
     });
+  }
+
+  public get id() {
+    return this.UploadForm.get("id");
   }
 
   public get title() {
@@ -48,22 +53,9 @@ export class SendArticlesComponent implements OnInit {
     this.UploadForm.patchValue({ file: File });
   }
 
-  SendArticle() {
-    let ArticleFile: ArticleModel = {
-      title: this.title.value,
-      abstract: this.abstract.value,
-      keywords: this.keywords.value,
-      file: this.file.value.name,
-      id: null
-    };
-
-    this.autorService.UploadFile(this.file.value).subscribe(item => {
+  EditArticle(id) {
+    this.autorService.EditArticle(id).subscribe(item => {
       console.log(item);
-      alert(`the item ${ArticleFile.file} has been uploaded...`);
-    });
-
-    this.autorService.UploadArticle(ArticleFile).subscribe(article => {
-      console.log(article);
     });
   }
 }
