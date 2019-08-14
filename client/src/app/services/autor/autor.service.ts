@@ -25,6 +25,10 @@ export class AutorService {
     );
   }
 
+  DeleteFile(file) {
+    return this.http.delete(`${url}containers/Articles/files/${file}`);
+  }
+
   token = "";
 
   //Crear Carpeta
@@ -41,11 +45,15 @@ export class AutorService {
   }
 
   //Obtener Archivo(Descargar)
-  GetFile(file) {
+  DownloadFile(file) {
     return this.http.get(`${url}containers/Articles/download/${file}`);
   }
 
   //Obtener Archivos
+  GetFile(file) {
+    return this.http.get(`${url}containers/Articles/files/${file}`);
+  }
+
   GetFiles() {
     return this.http.get(`${url}containers/Articles/files`);
   }
@@ -63,7 +71,7 @@ export class AutorService {
     );
   }
 
-  //Obtener info de Articulo
+  //Obtener info de Articulos
   GetFileData(): Observable<ArticleModel[]> {
     return this.http.get<ArticleModel[]>(`${url}Articles`, {
       headers: new HttpHeaders({
@@ -72,16 +80,21 @@ export class AutorService {
     });
   }
 
+  //Obtener info de un Articulo
+  GetData(id: string): Observable<ArticleModel> {
+    return this.http.get<ArticleModel>(`${url}Articles/${id}`, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
   //Editar info de Articulo
-  EditArticle(file): Observable<ArticleModel> {
-    return this.http.put<ArticleModel>(
-      `${url}Articles/${file.id}?access_token=${this.token}`,
-      file,
-      {
-        headers: new HttpHeaders({
-          "content-type": "application/json"
-        })
-      }
-    );
+  EditArticle(article: ArticleModel): Observable<ArticleModel> {
+    return this.http.put<ArticleModel>(`${url}Articles/${article.id}`, article, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
   }
 }

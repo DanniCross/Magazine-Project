@@ -74,14 +74,35 @@
   </div>
   <!--Desde Aqui no Afecta a lo que pasa en navBar-->
   <h1 class="Title has-text-centered title">Articles</h1>
-  <div *ngFor="let article of articles">
+  <div *ngFor="let article of articles" class="margin">
     <article class="tile is-child notification is-light">
-      <p class="title has-text-dark">Title: {{ article.title }}</p>
-      <p class="subtitle has-text-dark">KeyWords: {{ article.keywords }}</p>
-      <div class="content">
-        <p class="subtitle has-text-dark">Abstract: {{ article.abstract }}</p>
-        <p class="subtitle has-text-dark">File: {{ article.file }}</p>
-        <button class="button is-rounded" (click)="download(article)">Download</button>
+      <div class="columns">
+        <div class="column">
+          <p class="title has-text-dark">Title: {{ article.title }}</p>
+          <p class="subtitle has-text-dark">KeyWords: {{ article.keywords }}</p>
+        </div>
+        <div class="column">
+          <div class="content">
+            <p class="subtitle has-text-dark">
+              File:
+              {{ article.file }}
+            </p>
+            <br />
+            <p class="subtitle has-text-dark">
+              Abstract: {{ article.abstract }}
+            </p>
+          </div>
+        </div>
+        <div class="column">
+          <div>
+            <button
+              class="button is-rounded is-dark"
+              (click)="download(article)"
+            >
+              Download
+            </button>
+          </div>
+        </div>
       </div>
     </article>
     <br />

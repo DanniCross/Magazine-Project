@@ -3,7 +3,6 @@
     <div class="columns">
       <div class="column">
         <p class="title has-text-dark">Title: {{ article.title }}</p>
-        <br />
         <p class="subtitle has-text-dark">KeyWords: {{ article.keywords }}</p>
       </div>
       <div class="column">
@@ -18,7 +17,10 @@
       </div>
       <div class="column">
         <div>
-          <button class="button is-rounded is-dark" routerLink="/Autor/Edit/">
+          <button
+            class="button is-rounded is-dark"
+            routerLink="/Autor/Edit/{{ article.id }}"
+          >
             Edit
           </button>
         </div>

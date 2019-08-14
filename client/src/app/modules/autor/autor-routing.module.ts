@@ -29,7 +29,7 @@ const routes: Routes = [
     canActivate: [UrlInjectionAutorGuard]
   },
   {
-    path: "Autor/Edit",
+    path: "Autor/Edit/:id",
     component: EditArticlesComponent,
     canActivate: [UrlInjectionAutorGuard]
   }

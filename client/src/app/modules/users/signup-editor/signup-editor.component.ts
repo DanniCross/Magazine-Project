@@ -1,21 +1,16 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from "@angular/forms";
 import { UserService } from "src/app/services/users/user.service";
-import { environment } from "src/environments/environment";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { isNullOrUndefined } from "util";
+import { environment } from "src/environments/environment";
 import * as CryptoJS from "crypto-js";
 
 @Component({
-  selector: "app-signup",
-  templateUrl: "./signup.component.html",
-  styleUrls: ["./signup.component.css"]
+  selector: "app-signup-editor",
+  templateUrl: "./signup-editor.component.html",
+  styleUrls: ["./signup-editor.component.css"]
 })
-export class SignupComponent implements OnInit {
+export class SignupEditorComponent implements OnInit {
   constructor(private user: UserService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -131,7 +126,7 @@ export class SignupComponent implements OnInit {
         this.formation.value,
         this.email.value,
         password,
-        1
+        3
       )
       .subscribe(user => {
         alert(`The user ${user.name} ${user.lastname} has been registered!`);

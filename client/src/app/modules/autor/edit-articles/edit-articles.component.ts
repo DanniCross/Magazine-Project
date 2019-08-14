@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ArticleModel } from "src/app/models/article/ArticleModel";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AutorService } from "src/app/services/autor/autor.service";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-edit-articles",
@@ -9,10 +10,24 @@ import { AutorService } from "src/app/services/autor/autor.service";
   styleUrls: ["./edit-articles.component.css"]
 })
 export class EditArticlesComponent implements OnInit {
-  constructor(private autorService: AutorService) {}
+  constructor(
+    private autorService: AutorService,
+    private route: Router,
+    private router: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.UploadForm = this.FormCreator();
+    let id = this.router.snapshot.paramMap.get("id");
+    this.autorService.GetData(id).subscribe(article => {
+      this.UploadForm.patchValue({ title: article.title });
+      this.UploadForm.patchValue({ abstract: article.abstract });
+      this.UploadForm.patchValue({ keywords: article.keywords });
+      this.UploadForm.patchValue({ id: article.id });
+      this.autorService.GetFile(article.file).subscribe(file => {
+        this.UploadForm.patchValue({ file: file });
+      });
+    });
   }
 
   UploadForm: FormGroup;
@@ -53,9 +68,19 @@ export class EditArticlesComponent implements OnInit {
     this.UploadForm.patchValue({ file: File });
   }
 
-  EditArticle(id) {
-    this.autorService.EditArticle(id).subscribe(item => {
-      console.log(item);
+  EditArticle() {
+    let ArticleFile: ArticleModel = {
+      title: this.title.value,
+      abstract: this.abstract.value,
+      keywords: this.keywords.value,
+      file: this.file.value.name,
+      id: this.id.value
+    };
+    this.autorService.EditArticle(ArticleFile).subscribe(item => {
+      alert("This Article has been updated...");
+      this.route.navigate(["Autor/List"]);
     });
+    this.autorService.DeleteFile(ArticleFile.file).subscribe();
+    this.autorService.UploadFile(ArticleFile.file).subscribe();
   }
 }

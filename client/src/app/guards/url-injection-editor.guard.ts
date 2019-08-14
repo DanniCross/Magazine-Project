@@ -19,8 +19,8 @@ export class UrlInjectionEditorGuard implements CanActivate {
     } else if (user['rol'] == 1) {
       this.router.navigate(['/Autor/Home']);
       return false;
-    } else if (user['rol'] == 3) {
-      this.router.navigate(['/Editor/Home']);
+    } else if (user['rol'] == 2) {
+      this.router.navigate(['/Evaluator/Home']);
       return false;
     } else {
       return true;
