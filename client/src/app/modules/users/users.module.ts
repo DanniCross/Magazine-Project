@@ -25,4 +25,4 @@ import { SignupHomeComponent } from "./signup-home/signup-home.component";
   ],
   exports: [LoginComponent, SignupComponent]
 })
-export class UsersModule {}
+export class UsersModule { }

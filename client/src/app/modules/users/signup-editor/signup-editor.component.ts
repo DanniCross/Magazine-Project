@@ -11,7 +11,7 @@ import * as CryptoJS from "crypto-js";
   styleUrls: ["./signup-editor.component.css"]
 })
 export class SignupEditorComponent implements OnInit {
-  constructor(private user: UserService, private formBuilder: FormBuilder) {}
+  constructor(private user: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.SignUPForm = this.CreatorForm();
@@ -126,7 +126,8 @@ export class SignupEditorComponent implements OnInit {
         this.formation.value,
         this.email.value,
         password,
-        3
+        3,
+        false
       )
       .subscribe(user => {
         alert(`The user ${user.name} ${user.lastname} has been registered!`);

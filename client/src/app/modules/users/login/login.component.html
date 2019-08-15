@@ -8,6 +8,12 @@
       <div *ngIf="LogErr">
         <p class="has-text-danger">Email or password wrong!</p>
       </div>
+      <div *ngIf="!confirm">
+        <p class="has-text-danger">First, you must verify you email to can login!</p>
+      </div>
+      <div *ngIf="confirmLink">
+        <p class="has-text-danger">Yo have already verified your acount!</p>
+      </div>
       <div class="field">
         <p class="control has-icons-left has-icons-right">
           <input class="input is-primary is-rounded" type="email" placeholder="Email" formControlName="email"

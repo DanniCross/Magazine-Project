@@ -23,7 +23,8 @@ export class UserService {
     formation,
     email,
     password,
-    rol
+    rol,
+    confirmed
   ): Observable<UserModel> {
     return this.http.post<UserModel>(
       `${url}Users`,
@@ -38,7 +39,8 @@ export class UserService {
         formation,
         email,
         password,
-        rol
+        rol,
+        confirmed
       },
       {
         headers: new HttpHeaders({
@@ -92,14 +94,44 @@ export class UserService {
     );
   }
 
-  //Actualizar informacion de Ususario
-  UpdateUser(user: UserModel): Observable<UserModel> {
+  UpdateUser(
+    user: UserModel,
+    name,
+    secondname,
+    lastname,
+    secondlastname,
+    country,
+    phone,
+    afiliation,
+    formation,
+    email,
+    rol,
+    confirmed,
+    password
+  ): Observable<UserModel> {
     console.log(user.password);
-    return this.http.put<UserModel>(`${url}Users/${user.id}`, user, {
-      headers: new HttpHeaders({
-        "content-type": "application/json"
-      })
-    });
+    return this.http.put<UserModel>(
+      `${url}Users/${user.id}`,
+      {
+        name,
+        secondname,
+        lastname,
+        secondlastname,
+        country,
+        phone,
+        afiliation,
+        formation,
+        email,
+        rol,
+        confirmed,
+        password
+      },
+      {
+        headers: new HttpHeaders({
+          "content-type": "application/json"
+        })
+      }
+    );
   }
 
   //Guardar un nuevo usuario
