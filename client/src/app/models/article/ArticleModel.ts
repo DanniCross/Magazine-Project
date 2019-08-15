@@ -3,5 +3,7 @@ export class ArticleModel {
   abstract: String;
   keywords: String;
   file: String;
+  state: String;
+  autor: String;
   id: String;
 }

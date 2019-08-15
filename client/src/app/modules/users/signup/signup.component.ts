@@ -16,7 +16,7 @@ import * as CryptoJS from "crypto-js";
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
-  constructor(private user: UserService, private formBuilder: FormBuilder) {}
+  constructor(private user: UserService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.SignUPForm = this.CreatorForm();
@@ -118,7 +118,7 @@ export class SignupComponent implements OnInit {
   }
 
   SignUp() {
-    let password = this.Ofus(this.password.value);
+    /*let password = this.Ofus(this.password.value);*/
     this.user
       .Register(
         this.name.value,
@@ -130,10 +130,23 @@ export class SignupComponent implements OnInit {
         this.afiliation.value,
         this.formation.value,
         this.email.value,
-        password,
-        1
+        this.Ofus(this.password.value),
+        1,
+        false
       )
       .subscribe(user => {
+        let type = '';
+        if (user['rol'] == 1) {
+          type = 'Author';
+        } else {
+          type = 'Editor';
+        }
+        let message = `<h2>Welcome to Magazine-Vector ${user.name} ${user.lastname}</h1><br><br>
+          Yo have socessfully registered in our magazine how an ${type} and we are very happy to have you on or team
+          so, in this email we send you the confirmation link of your email: <br><br>
+          http://localhost:4200/Login/${user.id}`;
+        let subject = 'Welcome to the Magazine-Vector team!'
+        this.user.SendEmail(message, subject, user.email).subscribe();
         alert(`The user ${user.name} ${user.lastname} has been registered!`);
       });
   }

@@ -12,4 +12,5 @@ export class UserModel {
     password: String;
     email: String;
     rol: Number;
+    confirmed: Boolean;
 }

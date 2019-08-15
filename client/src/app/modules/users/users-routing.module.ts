@@ -16,6 +16,11 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
+    path: "Login/:id",
+    component: LoginComponent,
+    canActivate: [LoginGuard]
+  },
+  {
     path: "Signup/Autor",
     component: SignupComponent,
     canActivate: [LoginGuard]
@@ -36,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes), AutorModule, EditorModule, EvaluatorModule],
   exports: [RouterModule]
 })
-export class UsersRoutingModule {}
+export class UsersRoutingModule { }

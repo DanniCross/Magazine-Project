@@ -68,13 +68,16 @@ export class EditArticlesComponent implements OnInit {
     this.UploadForm.patchValue({ file: File });
   }
 
+  //Editar Informacion de Articulo
   EditArticle() {
     let ArticleFile: ArticleModel = {
       title: this.title.value,
       abstract: this.abstract.value,
       keywords: this.keywords.value,
       file: this.file.value.name,
-      id: this.id.value
+      id: this.id.value,
+      autor:null,
+      state: null
     };
     this.autorService.EditArticle(ArticleFile).subscribe(item => {
       alert("This Article has been updated...");

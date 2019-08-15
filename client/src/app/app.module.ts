@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { NgxCaptchaModule } from 'ngx-captcha';
+import { NgxCaptchaModule } from "ngx-captcha";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -9,8 +9,13 @@ import { HomeComponent } from "./landing/home/home.component";
 import { FooterComponent } from "./landing/footer/footer.component";
 import { CarouselComponent } from "./landing/carousel/carousel.component";
 import { TemporalComponent } from "./landing/temporal/temporal.component";
+<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
 import { UserManualComponent } from './landing/user-manual/user-manual.component';
+=======
+import { HttpClientModule } from "@angular/common/http";
+import { NgxPaginationModule } from "ngx-pagination";
+>>>>>>> e83ee442aad470d97f7efa53ae025404b628e266
 
 @NgModule({
   declarations: [
@@ -22,8 +27,14 @@ import { UserManualComponent } from './landing/user-manual/user-manual.component
     TemporalComponent,
     UserManualComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, NgxCaptchaModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgxCaptchaModule,
+    HttpClientModule,
+    NgxPaginationModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

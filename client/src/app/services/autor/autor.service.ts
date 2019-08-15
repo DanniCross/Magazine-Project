@@ -89,12 +89,24 @@ export class AutorService {
     });
   }
 
-  //Editar info de Articulo
-  EditArticle(article: ArticleModel): Observable<ArticleModel> {
+  updateArticle(article: ArticleModel): Observable<ArticleModel> {
     return this.http.put<ArticleModel>(`${url}Articles/${article.id}`, article, {
       headers: new HttpHeaders({
         "content-type": "application/json"
       })
     });
+  }
+
+  //Editar info de Articulo
+  EditArticle(article: ArticleModel): Observable<ArticleModel> {
+    return this.http.put<ArticleModel>(
+      `${url}Articles/${article.id}`,
+      article,
+      {
+        headers: new HttpHeaders({
+          "content-type": "application/json"
+        })
+      }
+    );
   }
 }

@@ -44,3 +44,11 @@
   box-shadow: 1px 10px 20px rgba(10, 10, 10, 0.5),
     0 0 0 0.1px rgba(10, 10, 10, 0.5);
 }
+
+.boxColor {
+  background-color: hsl(310, 49%, 28%);
+}
+
+.pagination {
+  margin-left: 26vw;
+}
