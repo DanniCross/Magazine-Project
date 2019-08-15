@@ -1,4 +1,6 @@
 <br />
+<br />
+<br />
 <div class="columns">
   <div class="column">
     <article class="tile is-child notification is-light box">
@@ -26,7 +28,32 @@
                 </div>
               </div>
               <div class="column">
-                <h3 class="has-text-light">{{ article.state }}</h3>
+                <div class="row">
+                  <button
+                    class="button is-rounded is-danger has-text-light is-outlined"
+                    (click)="state(article, 3)"
+                  >
+                    Rejected
+                  </button>
+                </div>
+                <br />
+                <div class="row">
+                  <button
+                    class="button is-rounded is-dark has-text-light is-outlined"
+                    (click)="state(article, 2)"
+                  >
+                    Accepted with changes
+                  </button>
+                </div>
+                <br />
+                <div class="row">
+                  <button
+                    class="button is-rounded is-success has-text-light is-outlined"
+                    (click)="state(article, 1)"
+                  >
+                    Accepted
+                  </button>
+                </div>
               </div>
             </div>
           </article>

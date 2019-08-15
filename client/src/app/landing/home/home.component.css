@@ -48,3 +48,7 @@
 .boxColor {
   background-color: hsl(310, 49%, 28%);
 }
+
+.pagination {
+  margin-left: 26vw;
+}

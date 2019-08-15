@@ -54,6 +54,7 @@ export class SendArticlesComponent implements OnInit {
       abstract: this.abstract.value,
       keywords: this.keywords.value,
       file: this.file.value.name,
+      state: null,
       id: null
     };
 

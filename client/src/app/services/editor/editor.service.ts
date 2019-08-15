@@ -23,4 +23,12 @@ export class EditorService {
       })
     });
   }
+
+  updateUser(user: UserModel): Observable<UserModel> {
+    return this.http.put<UserModel>(`${url}Users/${user.id}`, user, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
 }
