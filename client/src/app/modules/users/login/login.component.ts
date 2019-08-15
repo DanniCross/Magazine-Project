@@ -6,6 +6,7 @@ import { isNullOrUndefined } from "util";
 import * as CryptoJS from "crypto-js";
 import { Router } from "@angular/router";
 import { LoginGuard } from "src/app/guards/login.guard";
+import { UserModel } from 'src/app/models/user/UserModel';
 
 @Component({
   selector: "app-login",
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit, DoCheck {
     private formBuilder: FormBuilder,
     private user: UserService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.LoginForm = this.FormCreator();
@@ -41,6 +42,9 @@ export class LoginComponent implements OnInit, DoCheck {
   size = 0;
   key = environment.captchakey;
   captcha = false;
+  LogErr = false;
+  Forget = false;
+  exist = true;
 
   LoginForm: FormGroup;
 
@@ -80,6 +84,35 @@ export class LoginComponent implements OnInit, DoCheck {
     return result;
   }
 
+  forget() {
+    this.Forget = !this.Forget;
+  }
+
+  verify() {
+    let exist = false;
+    this.user.GetUsers().subscribe(users => {
+      for (let i = 0; i < users.length; i++) {
+        if (users[i].email == this.email.value) {
+          let emailAdresses = `${users[i].email}`;
+          let password = window.btoa(Date.now().toString()).substr(0, 8);
+          users[i].password = this.Ofus(password);
+          let message = `Hi dear ${users[i].name} ${users[i].lastname}. <br><br> How did you request a password change, 
+            we have processed your request, so your new loggin information is: <br>
+              Email: ${emailAdresses}<br>
+              Password: ${password}`;
+          let subject = "Magazine-Vector password change";
+          this.user.UpdateUser(users[i]).subscribe();
+          this.user.SendEmail(message, subject, emailAdresses).subscribe(info => {
+            alert('The verification email has been sent')
+          });
+          exist = true;
+          break;
+        }
+      }
+    });
+    this.exist = exist;
+  }
+
   Login() {
     let password = this.Ofus(this.password.value);
     this.user.Login(this.email.value, password).subscribe(user => {
@@ -91,6 +124,8 @@ export class LoginComponent implements OnInit, DoCheck {
       } else if (user["user"]["rol"] == 2) {
         this.router.navigate(["/Evaluator/Home"]);
       }
+    }, error => {
+      this.LogErr = true;
     });
   }
 }

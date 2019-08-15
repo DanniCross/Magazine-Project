@@ -33,6 +33,31 @@ export class UserService {
     });
   }
 
+  GetUsers(): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(`${url}Users`, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
+  SendEmail(message, subject, emailAdresses) {
+    return this.http.post(`${url}Articles/sendEmail`, { message, subject, emailAdresses }, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
+  UpdateUser(user: UserModel): Observable<UserModel> {
+    console.log(user.password);
+    return this.http.put<UserModel>(`${url}Users/${user.id}`, user, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
   SaveUser(user, token) {
     localStorage.setItem('UserInfo', JSON.stringify(user));
     localStorage.setItem('TokenID', token);

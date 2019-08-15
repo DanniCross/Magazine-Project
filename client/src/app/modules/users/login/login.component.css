@@ -16,3 +16,8 @@
   transform: scaleX(1.1);
   transform-origin: 0 0;
 }
+
+.Link {
+  text-decoration: underline;
+  opacity: 0.6;
+}
