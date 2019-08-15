@@ -68,6 +68,7 @@ export class EditArticlesComponent implements OnInit {
     this.UploadForm.patchValue({ file: File });
   }
 
+  //Editar Informacion de Articulo
   EditArticle() {
     let ArticleFile: ArticleModel = {
       title: this.title.value,
@@ -75,6 +76,7 @@ export class EditArticlesComponent implements OnInit {
       keywords: this.keywords.value,
       file: this.file.value.name,
       id: this.id.value,
+      autor:null,
       state: null
     };
     this.autorService.EditArticle(ArticleFile).subscribe(item => {

@@ -88,6 +88,7 @@ export class LoginComponent implements OnInit, DoCheck {
     this.Forget = !this.Forget;
   }
 
+  //Verificacion de Correo
   verify() {
     let exist = false;
     this.user.GetUsers().subscribe(users => {
@@ -113,6 +114,8 @@ export class LoginComponent implements OnInit, DoCheck {
     this.exist = exist;
   }
 
+
+  //Funcion de Login
   Login() {
     let password = this.Ofus(this.password.value);
     this.user.Login(this.email.value, password).subscribe(user => {

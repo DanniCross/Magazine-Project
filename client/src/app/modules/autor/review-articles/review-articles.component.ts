@@ -19,6 +19,7 @@ export class ReviewArticlesComponent implements OnInit {
 
   filesFormat: any = [];
 
+  //Obtener informacion de Archivo y de Articulo
   getInfo() {
     this.autorService.GetFileData().subscribe(items => {
       this.articles = items;
