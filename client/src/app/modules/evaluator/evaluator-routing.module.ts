@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeEvaluadorComponent } from "./home-evaluador/home-evaluador.component";
 import { UrlInjectionEvaluatorGuard } from "src/app/guards/url-injection-evaluator.guard";
 
+
 const routes: Routes = [
   {
     path: "Evaluator/Home",
