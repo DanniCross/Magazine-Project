@@ -19,6 +19,7 @@ export class AdminUsersComponent implements OnInit {
   usersAutors: UserModel[] = [];
   usersEvaluators: UserModel[] = [];
 
+  //Funcion para obtener los usuarios del sistema
   getUsers() {
     this.editorService.getUsers().subscribe(items1 => {
       for (let i = 0; i < items1.length; i++) {
@@ -31,6 +32,7 @@ export class AdminUsersComponent implements OnInit {
     });
   }
 
+  //Cambio de Rol
   changeRol(user) {
     if (user["rol"] == 1) {
       user["rol"] = 2;

@@ -28,6 +28,7 @@ export class EvaluateArticlesComponent implements OnInit {
     });
   }
 
+  //Cambia el estado del Articulo
   state(article, flag) {
     this.autorService.GetData(article.id).subscribe(item => {
       if (flag == 1) {

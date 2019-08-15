@@ -16,6 +16,7 @@ export class EditorService {
 
   token = "";
 
+  //Funcion para obtener todos usuarios del sistema
   getUsers(): Observable<UserModel[]> {
     return this.http.get<UserModel[]>(`${url}Users`, {
       headers: new HttpHeaders({
@@ -24,6 +25,7 @@ export class EditorService {
     });
   }
 
+  //Actualizar informacion de usuario
   updateUser(user: UserModel): Observable<UserModel> {
     return this.http.put<UserModel>(`${url}Users/${user.id}`, user, {
       headers: new HttpHeaders({

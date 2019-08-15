@@ -4,5 +4,6 @@ export class ArticleModel {
   keywords: String;
   file: String;
   state: String;
+  autor: String;
   id: String;
 }
