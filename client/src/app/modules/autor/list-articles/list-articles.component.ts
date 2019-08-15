@@ -17,6 +17,9 @@ export class ListArticlesComponent implements OnInit {
   articles: ArticleModel[] = [];
   file: any;
 
+    cp: number = 1;
+  total: number = 0;
+
   filesFormat: any = [];
 
   getInfo() {
@@ -34,5 +37,9 @@ export class ListArticlesComponent implements OnInit {
         this.autorService.GetFile(this.filesFormat[i]);
       }
     }
+  }
+
+  onPageChange(event): void {
+    this.cp = event;
   }
 }

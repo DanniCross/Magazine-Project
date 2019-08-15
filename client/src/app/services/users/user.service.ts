@@ -68,6 +68,14 @@ export class UserService {
     });
   }
 
+  GetUser(id): Observable<UserModel> {
+    return this.http.get<UserModel>(`${url}Users/${id}`, {
+      headers: new HttpHeaders({
+        "content-type": "application/json"
+      })
+    });
+  }
+
   SendEmail(message, subject, emailAdresses) {
     return this.http.post(`${url}Articles/sendEmail`, { message, subject, emailAdresses }, {
       headers: new HttpHeaders({

@@ -74,7 +74,8 @@ export class EditArticlesComponent implements OnInit {
       abstract: this.abstract.value,
       keywords: this.keywords.value,
       file: this.file.value.name,
-      id: this.id.value
+      id: this.id.value,
+      state: null
     };
     this.autorService.EditArticle(ArticleFile).subscribe(item => {
       alert("This Article has been updated...");

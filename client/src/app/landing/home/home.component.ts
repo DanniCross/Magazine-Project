@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
       .scrollIntoView({ behavior: "smooth", block: "center" });
   };
 
+  uploadedFiles: Array<File>;
+
   articles: ArticleModel[] = [];
 
   getInfo() {
@@ -28,10 +30,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  download(article) { 
+  download(article) {
     this.autorService.GetFile(article.file).subscribe(file => {
       console.log(file);
-    }
-    );
+    });
   }
 }
