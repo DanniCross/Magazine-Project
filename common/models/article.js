@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = function (Article) {
-    Article.sendEmail = (sender, message, subject, emailAdresses, cb) => {
+    Article.sendEmail = (message, subject, emailAdresses, cb) => {
         Article.app.models.Email.send({
             to: emailAdresses,
-            from: sender,
+            from: 'José Cruz',
             subject: subject,
             text: message,
             html: message
@@ -18,17 +18,12 @@ module.exports = function (Article) {
     Article.remoteMethod('sendEmail', {
         http: {
             path: '/sendEmail',
-            verb: 'get'
+            verb: 'post'
         },
         description: [
             "Api to send email messages."
         ],
         accepts: [
-            {
-                arg: 'sender',
-                type: 'string',
-                required: true
-            },
             {
                 arg: 'message',
                 type: 'string',
